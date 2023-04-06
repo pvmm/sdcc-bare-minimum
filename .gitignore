@@ -50,3 +50,15 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# SDCC files
+*.map
+*.lst
+*.rst
+*.rel
+*.sym
+*.ihx
+*.lk
+*.noi
+*.asm
+*.com
