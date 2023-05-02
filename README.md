@@ -12,7 +12,7 @@ Bare minimum needed to create a .COM application on MSX-DOS. It will scan all th
 ## TODO
 
 - Include `ultoa_10`, `ltoa_10`, `ultoa_16` (hexadecimal);
-- Include `uitoa_16` (hexadecimal);
+- ~~Include `uitoa_16` (hexadecimal);~~
 
 ## Required
 

@@ -1,5 +1,5 @@
-SDCC := /usr/local/bin/sdcc
-SDASZ80 := /usr/local/bin/sdasz80
+SDCC := sdcc
+SDASZ80 := sdasz80
 HEX2BIN := hex2bin
 
 APP_IHX := testing.ihx

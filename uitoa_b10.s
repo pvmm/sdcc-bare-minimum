@@ -1,12 +1,12 @@
-;Converts a 16-bit unsigned integer to an ASCII string.
+; Converts a 16-bit unsigned integer to an ASCII string.
 
-_uitoa_10::
-;Input:
-;   arg1 the number to convert
-;   arg2 points to where to write the ASCII string (up to 6 bytes needed).
-;Output:
-;   return points to the null-terminated ASCII string
-;   NOTE: This isn't necessarily the same as the input
+_uitoa_b10::
+; Input:
+;    arg1 the number to convert
+;    arg2 points to where to write the ASCII string (up to 6 bytes needed).
+; Output:
+;    return points to the null-terminated ASCII string
+;    NOTE: This isn't necessarily the same as the input
 
     ld hl, #2
     add hl, sp
@@ -20,7 +20,7 @@ _uitoa_10::
     ld h, (hl)
     ld l, a
 
-u10toa_naked::
+uitoa_b10_naked::
     ex de, hl            ; de <- ascii string, hl <- number
 
     ; 1st digit

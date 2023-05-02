@@ -1,7 +1,7 @@
 ;Converts a 16-bit signed integer to an ASCII string.
-.globl u10toa_naked
+.globl uitoa_b10_naked
 
-_itoa_10::
+_itoa_b10::
 ;Input:
 ;   arg1 is the number to convert
 ;   arg2 points to where to write the ASCII string (up to 7 bytes needed).
@@ -23,7 +23,7 @@ _itoa_10::
 
     ld a, d
     add a, a
-    jp nc, u10toa_naked
+    jp nc, uitoa_b10_naked
     xor a
     sub e
     ld e, a
@@ -32,7 +32,7 @@ _itoa_10::
     ld d, a
     inc hl  ; make space for a negative sign
 
-    call u10toa_naked
+    call uitoa_b10_naked
     dec hl
     ld (hl), #'-'
 
