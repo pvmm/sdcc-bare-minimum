@@ -29,4 +29,4 @@ $(APP_IHX) : $(C_OBJECTS) $(ASM_OBJECTS)
 	$(SDASZ80) -o $@ $<
 
 clean:
-	rm -f *.rel testing.ihx *.lk *.map *.lst *.rst *.mem *.asm *.sym
+	rm -f *.rel $(APP_IHX) *.lk *.map *.lst *.rst *.mem *.asm *.sym
