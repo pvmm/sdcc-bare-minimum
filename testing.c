@@ -4,20 +4,31 @@
 #include "printf.h"
 
 
-int function_to_move(int a, int b)
+int function1(int a, int b)
 {
 	return a + b;
 }
-int function_end_marker()
+int function1_end_marker()
+{
+	return 0;
+}
+
+int function2(int a, int b)
+{
+	return a * b;
+}
+int function2_end_marker()
 {
 	return 0;
 }
 
 // function signature
 typedef int (*callback_t)(int, int);
+
 // first available bank 3 position
 static uint8_t* last_mem = 0xc000;
-callback_t move_to_high_mem(const callback_t function, uint16_t len, void* dest)
+
+callback_t move_to_bank3(const callback_t function, uint16_t len, void* dest)
 {
 	memcpy((uint8_t*) dest, (const uint8_t*) function, len);
 
@@ -30,8 +41,15 @@ callback_t move_to_high_mem(const callback_t function, uint16_t len, void* dest)
 
 int main()
 {
-	int size = (void*)function_end_marker - (void*)function_to_move;
-	callback_t new_function = move_to_high_mem(function_to_move, size, last_mem);
-	// call function copy from bank 3
-	return new_function(2, 3);
+	printf("Moving functions to bank 3...\r\n");
+
+	int size1 = (void*)function1_end_marker - (void*)function1;
+	callback_t new_function1 = move_to_bank3(function1, size1, last_mem);
+
+	int size2 = (void*)function2_end_marker - (void*)function2;
+	callback_t new_function2 = move_to_bank3(function2, size2, last_mem);
+
+	// calling function copies from bank 3
+	printf("function1(2, 3) result: %i\r\n", new_function1(2, 3));
+	printf("function2(3, 4) result: %i\r\n", new_function2(3, 4));
 }
